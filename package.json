@@ -6,15 +6,17 @@
   "description": "template for running cron-type twitter bots",
   "author": "Shuan Wang",
   "dependencies": {
-    "lwt": "^1.0.0"
+    "lwt": "^1.0.3"
   },
   "config": {
-    "exclude": "*.DS_Store* yarn.lock npm-debug.log node_modules/.yarn-integrity *.git* *.svn*"
+    "exclude": "*.DS_Store* *.lint*.* yarn.lock npm-debug.log node_modules/*/test/* node_modules/*/.* node_modules/*/README.md node_modules/.yarn-integrity *.git* *.svn* *.zip"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "zip -X -x $npm_package_config_exclude -r $npm_package_name.zip .",
     "upload": "aws lambda update-function-code --function-name $npm_package_name --zip-file fileb://`pwd`/$npm_package_name.zip",
-    "deploy": "npm run build && npm run upload"
+    "deploy": "npm run build && npm run upload",
+    "add-perm": "aws lambda add-permission --function-name $npm_package_name --statement-id $npm_package_name --action \"lambda:InvokeFunction\" --principal events.amazonaws.com",
+    "set-cron": "aws events put-rule --name twitter-$npm_package_name --schedule-expression 'rate(1 minute)'"
   }
 }
