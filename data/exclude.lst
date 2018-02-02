@@ -1,4 +1,3 @@
-twitter-keys.json
 *.DS_Store*
 *.lint*.*
 yarn.lock
