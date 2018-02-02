@@ -16,7 +16,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "zip -X -x@exclude.lst -r $npm_package_name.zip .",
+    "build": "zip -X --exclude @./data/exclude.lst -r $npm_package_name.zip .",
     "create": "aws lambda create-function --function-name $npm_package_name --role $npm_package_config_role --handler index.handler --runtime $npm_package_config_runtime --description \"$npm_package_description\" --timeout $npm_package_config_timeout --zip-file fileb://`pwd`/$npm_package_name.zip",
     "upload": "aws lambda update-function-code --function-name $npm_package_name --zip-file fileb://`pwd`/$npm_package_name.zip",
     "deploy": "npm run build && npm run upload",

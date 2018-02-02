@@ -11,6 +11,7 @@ node_modules/*/AUTHORS
 node_modules/*/LICENSE
 node_modules/*/*.md
 node_modules/.yarn-integrity
+node_modules/node-uuid/benchmark/*
 ignore/*
 *.git*
 *.svn*
