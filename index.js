@@ -2,12 +2,8 @@
 
 const T = require('lwt')
 
-let params = {
-  accessToken: '', // INSERT CRED,
-  accessSecret: '', // INSERT CRED,
-  consumerKey: '', // INSERT CRED,
-  consumerSecret: '', // INSERT CRED,
-}
+// fetch twitter credentials
+let params = require('./data/twitter-keys.json')
 
 let t = new T(params)
 
