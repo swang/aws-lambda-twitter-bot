@@ -3,7 +3,7 @@
 const T = require('lwt')
 
 // fetch twitter credentials
-let params = require('./data/twitter-keys.json')
+let params = require('../data/twitter-keys.json')
 
 let t = new T(params)
 
